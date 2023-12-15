@@ -1,0 +1,50 @@
+<!-- BREADCRUMBS -->
+<div class="bcrumbs">
+    <div class="container">
+        <ul>
+            <li>Edit Sub Category</li>
+        </ul>
+    </div>
+</div>
+
+<!-- MY ACCOUNT -->
+<div class="account-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 checkout-steps">
+                <h6>Edit Sub Category</h6>
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-md-9 col-sm-8">
+                <div id="account-id">
+                    <h4 class="account-title"><span class="fa fa-chevron-right"></span>Edit Sub Category</h4>
+                    <div class="account-form">
+                        <form [formGroup]="formGroup" (submit)="submit()">
+                            <ul class="form-list row">
+                                <li class="col-md-6 col-sm-6">
+                                    <label for="category_id">Category Name <em>*</em></label>
+                                    <select class="form-control" [formControl]="formGroup.controls['category_id']"
+                                            id="category_id" [(ngModel)]="subCategory.category_id._id">
+                                        <option *ngFor="let category of categories;" [value]="category?._id">
+                                            {{category?.name}}
+                                        </option>
+                                    </select>
+                                </li>
+                                <li class="col-md-6 col-sm-6">
+                                    <label>Sub-Category Name <em>*</em></label>
+                                    <input name="name" class="input-md form-control" placeholder="Name"
+                                           [formControl]="formGroup.controls['name']" type="text"
+                                           [(ngModel)]="subCategory.name">
+                                </li>
+                            </ul>
+                            <div class="buttons-set">
+                                <button class="btn-black" type="submit"><span><span>Submit</span></span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix space20"></div>

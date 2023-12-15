@@ -1,0 +1,62 @@
+<div>
+    <ul class="account-list">
+        <li><a routerLink="/"> <i class="fa fa-edit"></i> My Account</a></li>
+        <li><a routerLink="/user/change_password"> <i class="fa fa-edit"></i> Change Password</a></li>
+        <li><a routerLink="/user/all" *ngIf="(layoutService?.userGroup == 'admin')"> <i class="fa fa-edit"></i> All Users</a>
+        </li>
+        <li><a routerLink="/user/create_user" *ngIf="(layoutService?.userGroup == 'admin')"> <i class="fa fa-edit"></i>Create
+            Users</a></li>
+        <li *ngIf="(layoutService?.userGroup !== 'local_order_manager')"><a routerLink="/request/all"> <i class="fa fa-edit"></i> All Requests</a></li>
+        <li><a routerLink="/product/all"
+               *ngIf="(layoutService?.userGroup == 'admin') || (layoutService?.userGroup == 'product_manager')"> <i
+            class="fa fa-edit"></i> All Products</a></li>
+        <li><a routerLink="/product/create"
+               *ngIf="(layoutService?.userGroup == 'admin') || (layoutService?.userGroup == 'product_manager')"> <i
+            class="fa fa-edit"></i> Create Product</a></li>
+        <li><a routerLink="/order/all"
+               *ngIf="(layoutService?.userGroup == 'admin') || (layoutService?.userGroup == 'order_manager') || (layoutService?.userGroup == 'local_order_manager') || (layoutService?.userGroup == 'global_order_manager')"> <i
+            class="fa fa-edit"></i> All Orders</a></li>
+        <li><a routerLink="/report"
+               *ngIf="(layoutService?.userGroup == 'admin')"> <i
+                class="fa fa-clipboard"></i> Report</a></li>
+        <li><a routerLink="/divisions/all"
+               *ngIf="(layoutService?.userGroup === 'admin') || (layoutService?.userGroup == 'product_manager')"> <i
+            class="fa fa-edit"></i> All Divisions</a></li>
+        <li><a routerLink="/divisions/create"
+               *ngIf="(layoutService?.userGroup === 'admin') || (layoutService?.userGroup == 'product_manager')"> <i
+            class="fa fa-edit"></i>Create Divisions</a></li>
+        <li><a routerLink="/districts/all"
+               *ngIf="(layoutService?.userGroup === 'admin') || (layoutService?.userGroup == 'product_manager')"> <i
+            class="fa fa-edit"></i> All Districts</a></li>
+        <li><a routerLink="/districts/create"
+               *ngIf="(layoutService?.userGroup === 'admin') || (layoutService?.userGroup == 'product_manager')"> <i
+            class="fa fa-edit"></i>Create Districts</a></li>
+        <li><a routerLink="/categories/all"
+               *ngIf="(layoutService?.userGroup === 'admin') || (layoutService?.userGroup == 'product_manager')"> <i
+            class="fa fa-edit"></i>All Categories</a></li>
+        <li><a routerLink="/categories/create"
+               *ngIf="(layoutService?.userGroup === 'admin') || (layoutService?.userGroup == 'product_manager')"> <i
+            class="fa fa-edit"></i>Create Categories</a></li>
+        <li><a routerLink="/sub-categories/all"
+               *ngIf="(layoutService?.userGroup === 'admin') || (layoutService?.userGroup == 'product_manager')"> <i
+            class="fa fa-edit"></i> All Sub Categories</a></li>
+        <li><a routerLink="/sub-categories/create"
+               *ngIf="(layoutService?.userGroup === 'admin') || (layoutService?.userGroup == 'product_manager')"> <i
+            class="fa fa-edit"></i> Create Sub Categories</a></li>
+        <li><a routerLink="/sliders/all"
+               *ngIf="(layoutService?.userGroup === 'admin') || (layoutService?.userGroup == 'product_manager')"> <i
+            class="fa fa-edit"></i> All Sliders</a></li>
+        <li><a routerLink="/sliders/create"
+               *ngIf="(layoutService?.userGroup === 'admin') || (layoutService?.userGroup == 'product_manager')"> <i
+            class="fa fa-edit"></i>Create Sliders</a></li>
+        <li><a routerLink="/global-sliders/all"
+               *ngIf="(layoutService?.userGroup === 'admin') || (layoutService?.userGroup == 'product_manager')"> <i
+            class="fa fa-edit"></i> All Global Sliders</a></li>
+        <li><a routerLink="/global-sliders/create"
+               *ngIf="(layoutService?.userGroup === 'admin') || (layoutService?.userGroup == 'product_manager')"> <i
+            class="fa fa-edit"></i>Create Global Sliders</a></li>
+        <li><a routerLink="/notifications/all"> <i class="fa fa-edit"></i> All Notifications</a></li>
+        <li *ngIf="(layoutService?.userGroup === 'admin')"><a routerLink="/settings"> <i class="fa fa-edit"></i> Settings</a></li>
+        <!--<li><a routerLink="/user/wishlist" *ngIf="layoutService?.userGroup == 'member'"> <i class="fa fa-edit"></i> Wishlist</a></li>-->
+    </ul>
+</div>

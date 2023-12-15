@@ -1,0 +1,47 @@
+<!-- BREADCRUMBS -->
+<div class="bcrumbs">
+    <div class="container">
+        <ul>
+            <li>Dashboard</li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- MY ACCOUNT -->
+<div class="account-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 checkout-steps">
+                <h6>Slider</h6>
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-md-9 col-sm-8">
+                <div id="account-id">
+                    <h4 class="account-title"><span class="fa fa-chevron-right"></span>Create Slider</h4>
+                    <div class="account-form">
+                        <form (submit)="sliderSubmit()" enctype="multipart/form-data">
+                            <div class="form-list row">
+
+                                <div class="clearfix"></div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Image <em>*</em></label>
+                                    <input name="slider_image" class="input-md form-control" placeholder="Image"
+                                           (change)="imageUpLoad($event)" type="file">
+                                    <span>Please upload <b>1200px X 350px</b> image only.</span>
+                                </div>
+                            </div>
+                            <div class="buttons-set">
+                                <button type="submit" class="btn btn-black">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix space20"></div>
+

@@ -1,0 +1,66 @@
+<div class="top_bar">
+    <div class="container">
+        <div class="row">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="tb_center pull-left">
+                        <ul>
+                            <li><i class="fa fa-phone"></i> Hotline: <a routerLink="">{{settingsService?.phone}}</a></li>
+                            <li><i class="fa fa-envelope-o"></i> <a routerLink="">online {{settingsService?.email}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tb_right pull-right">
+                        <ul>
+                            <li *ngIf="layoutService?.isLogin">
+                                <div class="tbr-info">
+                                    <span><a routerLink="/notifications/all">Notification ({{notificationsService?.unreadNotification}})</a></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tbr-info">
+                                    <ng-container *ngIf="!layoutService?.isLogin">
+                                    <span>Account <i class="fa fa-caret-down"></i></span>
+                                    </ng-container>
+                                    <ng-container *ngIf="layoutService?.isLogin">
+                                    <span>Hello, {{layoutService?.userName}} <i class="fa fa-caret-down"></i></span>
+                                    </ng-container>
+                                    <div class="tbr-inner">
+                                        <a routerLink="/user/my_account"
+                                           *ngIf="layoutService?.isLogin">Dashboard</a>
+                                        <a routerLink="/user/logout" *ngIf="layoutService?.isLogin">Logout</a>
+                                        <a routerLink="/user/login" *ngIf="!layoutService?.isLogin">Login</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="row">
+                <!-- Navmenu -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li *ngIf="layoutService?.isLogin">
+                            <a routerLink="">Dashboard</a>
+                        </li>
+                        <li *ngIf="layoutService?.isLogin">
+                            <a routerLink="/user/logout">Logout</a>
+                        </li>
+                        <li *ngIf="!layoutService?.isLogin">
+                            <a routerLink="/user/login">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

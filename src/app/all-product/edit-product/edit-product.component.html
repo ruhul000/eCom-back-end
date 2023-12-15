@@ -1,0 +1,192 @@
+<!-- BREADCRUMBS -->
+<div class="bcrumbs">
+    <div class="container">
+        <ul>
+            <li>Dashboard</li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- MY ACCOUNT -->
+<div class="account-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 checkout-steps">
+                <h6>Product</h6>
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-md-9 col-sm-8">
+                <div id="account-id">
+                    <h4 class="account-title"><span class="fa fa-chevron-right"></span>Edit Product</h4>
+                    <div class="account-form">
+                        <form [formGroup]="createProduct" (submit)="productSubmit()" enctype="multipart/form-data">
+                            <ul class="form-list row">
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Name <em>*</em></label>
+                                    <input name="name" class="input-md form-control" placeholder="Name"
+                                           formControlName="name" type="text" [(ngModel)]="product.name">
+                                    <span
+                                        *ngIf="createProduct?.controls['name']?.hasError('required') && createProduct?.controls['name']?.touched">Name is required.</span>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Price <em>*</em></label>
+                                    <input name="price" class="input-md form-control" placeholder="price"
+                                           formControlName="price" type="number" step="0.01" min="0"
+                                           [(ngModel)]="product.price">
+                                    <span
+                                        *ngIf="createProduct?.controls['price']?.hasError('required') && createProduct?.controls['price']?.touched">Price is required.</span>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Discount (%)</label>
+                                    <input name="discount" class="input-md form-control" placeholder="Discount"
+                                           formControlName="discount" type="number" step="0.01" min="0"
+                                           [(ngModel)]="product.discount">
+                                </div>
+                                <!--<div class="col-md-6 col-sm-6">-->
+                                <!--<label >Shipping Price</label>-->
+                                <!--<input name="shippingPrice" class="input-md form-control" placeholder="Shipping Price" formControlName="shippingPrice" type="number" step="0.01" min="0" [(ngModel)]="product.shippingPrice">-->
+                                <!--</div>-->
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Category <em>*</em></label>
+                                    <select name="category" class="input-md form-control"
+                                            formControlName="category"
+                                            [(ngModel)]="product.sub_category.category_id._id"
+                                            (change)="getSubCategoryByCategory($event.target.value)">
+                                        <option *ngFor="let category of categories" [value]="category?._id">
+                                            {{category?.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Sub Category <em>*</em></label>
+                                    <select name="sub_category" class="input-md form-control"
+                                            formControlName="sub_category" [(ngModel)]="product.sub_category._id">
+                                        <option *ngFor="let subCategory of showSubCategories" [value]="subCategory?._id">
+                                            {{subCategory?.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Product Status<em>*</em></label>
+                                    <select name="status" class="input-md form-control"
+                                            formControlName="status" required [(ngModel)]="product.status">
+                                        <option value="1">Active</option>
+                                        <option value="0">Disable</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Feature Product <em>*</em></label>
+                                    <select name="feature" class="input-md form-control"
+                                            formControlName="feature" required [(ngModel)]="product.feature">
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>New Product <em>*</em></label>
+                                    <select name="new" class="input-md form-control"
+                                            formControlName="new" required [(ngModel)]="product.new">
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Images <em>*</em></label>
+                                    <input name="product_image" class="input-md form-control" placeholder="Image"
+                                           (change)="imageUpLoad($event)" type="file" multiple>
+                                    <span>Please upload <b>400px X 500px</b> images only.</span>
+                                </div>
+                                <div class="col-md-12">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Attributes</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <ng-container>
+                                            <tr *ngFor="let component of product?.components">
+                                                <td>{{component?.name}}</td>
+                                                <td>{{component?.value}}</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger"
+                                                            (click)="removeComponents(product?._id, component)">Remove
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </ng-container>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-12" style="padding-bottom: 20px;">
+                                    <button type="button" class="btn btn-success" (click)="createProComponent()">Add New
+                                        Component
+                                    </button>
+                                </div>
+                                <ng-container *ngFor="let div of showDiv; let count = index;">
+                                    <div class="col-md-6 col-sm-6">
+                                        <label>Component Name <em>*</em></label>
+                                        <input class="input-md form-control" placeholder="Name"
+                                               [formControl]="createProduct?.controls['com_name_'+(count+1)]"
+                                               type="text">
+                                    </div>
+                                    <div class="col-md-6 col-sm-6">
+                                        <label>Component Value <em>*</em></label>
+                                        <input class="input-md form-control" placeholder="attributes"
+                                               [formControl]="createProduct?.controls['com_value_'+(count+1)]"
+                                               type="text">
+                                        <span>Use commma(,) for separate values. Ex: S,M,L,XL,XXL </span>
+                                    </div>
+                                </ng-container>
+                                <div class="col-md-12">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                Image
+                                            </th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <ng-container>
+                                            <tr *ngFor="let images of product?.images">
+                                                <td><img [src]="imageURL + images"
+                                                         style="max-height: 200px;max-width: 200px"></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger"
+                                                            (click)="removeImage(product?._id, images)">Remove
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </ng-container>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="col-md-12 col-sm-12">
+                                    <label>Details <em>*</em></label>
+                                    <textarea name="detail" class="form-control" placeholder="Product Detail"
+                                              formControlName="detail" [(ngModel)]="product.detail"></textarea>
+                                </div>
+                                <div class="col-md-12 col-sm-12">
+                                    <label>Description <em>*</em></label>
+                                    <div [froalaEditor] [(ngModel)]="product.description" [formControl]="createProduct?.controls['description']"></div>
+                                </div>
+                            </ul>
+                            <div class="buttons-set">
+                                <button type="submit" class="btn btn-black" [disabled]="!createProduct?.valid">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix space20"></div>

@@ -1,0 +1,56 @@
+<!-- BREADCRUMBS -->
+<div class="bcrumbs">
+    <div class="container">
+        <ul>
+            <li><a routerLink="">User</a></li>
+            <li>Login</li>
+        </ul>
+    </div>
+</div>
+
+<div class="space10"></div>
+
+<!-- BLOG CONTENT -->
+<div class="blog-content">
+    <div class="container">
+
+        <div class="row">
+            <!-- Sidebar -->
+            <aside class="col-md-offset-3 col-sm-6">
+                <h5 class="heading space40"><span>Login</span></h5>
+                <form [formGroup]="login" (submit)="loginSubmit()">
+                    <div class="row">
+                        <div class="col-md-12 space20">
+                            <label>Email<span class="text-danger">*</span></label>
+                            <input name="email" class="input-md form-control" placeholder="Email"
+                                   formControlName="email" type="email" autocomplete="off">
+                            <span
+                                *ngIf="login.controls['email'].hasError('required') && login.controls['email'].touched">Email is required.</span>
+                            <span *ngIf="login.controls['email'].hasError('email') && login.controls['email'].touched">Email is Not Valid.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 space20">
+                            <label>Password<span class="text-danger">*</span></label>
+                            <input name="password" class="input-md form-control" placeholder="Password"
+                                   formControlName="password" type="password" autocomplete="off">
+                            <span
+                                *ngIf="login.controls['password'].hasError('required') && login.controls['password'].touched">Password is required.</span>
+                        </div>
+                    </div>
+                    <div>
+                    <button type="submit" class="btn btn-black" [disabled]="!login.valid">
+                        Submit
+                    </button>
+                        <div class="pull-right"> Forgot Password? <a routerLink="/forgot-password">Click </a> here </div>
+                    </div>
+                </form>
+            </aside>
+
+            <div class="clearfix"></div>
+
+        </div>
+    </div>
+</div>
+
+<div class="clearfix space20"></div>

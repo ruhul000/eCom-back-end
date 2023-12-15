@@ -1,0 +1,152 @@
+<!-- BREADCRUMBS -->
+<div class="bcrumbs">
+    <div class="container">
+        <ul>
+            <li>Sites</li>
+        </ul>
+    </div>
+</div>
+
+<!-- MY ACCOUNT -->
+<div class="account-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 checkout-steps">
+                <h6>Sites</h6>
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-md-9 col-sm-8">
+                <div id="account-id">
+                    <h4 class="account-title"><span class="fa fa-chevron-right"></span>Sites</h4>
+                    <div class="account-form">
+                        <form [formGroup]="formGroup" (submit)="submit()">
+                            <div class="form-list row">
+                                <div class="clearfix"></div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Amazon Image <em>*</em></label>
+                                    <input name="amazon_photo" class="input-md form-control" placeholder="Image"
+                                           (change)="amazonPhotoUpload($event)" type="file">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Amazon Image <em>*</em></label>
+                                    <img [src]="imageUrl + settingsService?.amazon_photo"
+                                         style="height: 100px; width: 100px;">
+                                    <span>Please upload <b>600px X 300px</b> image only.</span>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Amazon Text <em>*</em></label>
+                                    <input placeholder="Amazon Text" type="text" name="amazon_text" class="input-md form-control"
+                                           [formControl]="formGroup.controls['amazon_text']"
+                                           [(ngModel)]="settingsService.amazon_text">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Ali Express Image <em>*</em></label>
+                                    <input name="ali_express_photo" class="input-md form-control" placeholder="Image"
+                                           (change)="aliExpressPhotoUpload($event)" type="file">
+                                    <span>Please upload <b>600px X 300px</b> image only.</span>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Ali Express Image <em>*</em></label>
+                                    <img [src]="imageUrl + settingsService?.ali_express_photo"
+                                         style="height: 100px; width: 100px;">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Ali Express Text <em>*</em></label>
+                                    <input placeholder="Ali Express Text" type="text" name="ali_express_text" class="input-md form-control"
+                                           [formControl]="formGroup.controls['ali_express_text']"
+                                           [(ngModel)]="settingsService.ali_express_text">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Dollar Rate <em>*</em></label>
+                                    <input placeholder="Dollar Rate" type="number" [min]="1" name="dollarRate"
+                                           class="input-md form-control"
+                                           [formControl]="formGroup.controls['dollarRate']"
+                                           [(ngModel)]="settingsService.dollarRate">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Home Product Group Header 1<em>*</em></label>
+                                    <input placeholder="Title" type="text" name="proHeader1"
+                                           class="input-md form-control"
+                                           [formControl]="formGroup.controls['proHeader1']"
+                                           [(ngModel)]="settingsService.proHeader1">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Home Product Group limit 1 <em>*</em></label>
+                                    <input placeholder="Limit" type="number" [min]="1" name="proLimit1"
+                                           class="input-md form-control"
+                                           [formControl]="formGroup.controls['proLimit1']"
+                                           [(ngModel)]="settingsService.proLimit1">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Home Product Group Header 2<em>*</em></label>
+                                    <input placeholder="Title" type="text" name="proHeader2"
+                                           class="input-md form-control"
+                                           [formControl]="formGroup.controls['proHeader2']"
+                                           [(ngModel)]="settingsService.proHeader2">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Home Product Group limit 2 <em>*</em></label>
+                                    <input placeholder="Limit" type="number" [min]="1" name="proLimit2"
+                                           class="input-md form-control"
+                                           [formControl]="formGroup.controls['proLimit2']"
+                                           [(ngModel)]="settingsService.proLimit2">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Phone <em>*</em></label>
+                                    <input placeholder="phone" type="text" name="phone" class="input-md form-control"
+                                           [formControl]="formGroup.controls['phone']"
+                                           [(ngModel)]="settingsService.phone">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Email <em>*</em></label>
+                                    <input placeholder="Email" type="email" name="email" class="input-md form-control"
+                                           [formControl]="formGroup.controls['email']"
+                                           [(ngModel)]="settingsService.email">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Bangladesh Office Address <em>*</em></label>
+                                    <textarea placeholder="Bangladesh Office Address" name="bdOffice" class="input-md form-control"
+                                    [formControl]="formGroup.controls['bdOffice']"
+                                    [(ngModel)]="settingsService.bdOffice"></textarea>
+
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>China Office Address <em>*</em></label>
+                                    <textarea placeholder="China Office Address" name="chinaOffice" class="input-md form-control"
+                                           [formControl]="formGroup.controls['chinaOffice']"
+                                              [(ngModel)]="settingsService.chinaOffice"></textarea>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label>Footer About Store <em>*</em></label>
+                                    <input placeholder="Footer About Store" type="text" name="footerAbout" class="input-md form-control"
+                                           [formControl]="formGroup.controls['footerAbout']"
+                                           [(ngModel)]="settingsService.footerAbout">
+                                </div>
+                            </div>
+                            <div class="buttons-set">
+                                <button [disabled]="!formGroup.valid" type="submit" class="btn btn-black">Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix space20"></div>

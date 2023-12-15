@@ -1,0 +1,49 @@
+<!-- BREADCRUMBS -->
+<div class="bcrumbs">
+    <div class="container">
+        <ul>
+            <li>All Categories</li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- MY ACCOUNT -->
+<div class="account-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 checkout-steps">
+                <h6>All Categories</h6>
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-md-9 col-sm-8">
+                <div id="account-id">
+                    <h4 class="account-title"><span class="fa fa-chevron-right"></span>All Categories</h4>
+                    <div class="order-history">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        <tr *ngFor="let category of categories">
+                                            <td>{{category?.name}}</td>
+                                            <td>
+                                                <a [routerLink]="'/categories/edit/' + category?._id" class="btn-black">Edit</a>
+                                                <a (click)="deleteCategory(category)" style="cursor: pointer;" class="btn-black">Delete</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix space20"></div>

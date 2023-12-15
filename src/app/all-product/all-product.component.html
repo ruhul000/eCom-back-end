@@ -1,0 +1,86 @@
+<!-- BREADCRUMBS -->
+<div class="bcrumbs">
+    <div class="container">
+        <ul>
+            <li>All Products</li>
+        </ul>
+    </div>
+</div>
+
+<!-- MY ACCOUNT -->
+<div class="account-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 checkout-steps">
+                <h6>All Products</h6>
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-md-9 col-sm-8">
+                <div id="account-id">
+                    <h4 class="account-title"><span class="fa fa-chevron-right"></span>All Products</h4>
+                    <div class="order-history">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Discount</th>
+                                            <!--<th>Shipping Price</th>-->
+                                            <th>feature</th>
+                                            <th>new</th>
+                                            <th>status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <ng-container *ngIf="products?.length > 0">
+                                            <tr *ngFor="let product of products">
+                                                <td><a [routerLink]="'/product/detail/' + product?._id">{{product?.name}}</a></td>
+                                                <td>{{product?.price}}</td>
+                                                <td>{{product?.discount ? product?.discount+'%' : '0%'}}</td>
+                                                <!--<td>{{product?.shippingPrice ? product?.shippingPrice : '0'}}</td>-->
+                                                <td>
+                                                    <div class="item-price">{{product?.feature == 1 ? 'active' : 'disabled'}}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="item-price">{{product?.new == 1 ? 'active' : 'disabled'}}</div>
+                                                </td>
+                                                <td>{{product?.status == 1 ? 'active' : 'disabled'}}</td>
+                                                <td>
+                                                    <a [routerLink]="'/product/edit/'+ product?._id" class="btn-black">Edit</a>
+                                                    <button class="btn-black" (click)="deleteProduct(product?._id)">Delete</button>
+                                                </td>
+                                            </tr>
+                                        </ng-container>
+
+
+                                        <tr *ngIf="products.length <= 0">
+                                            <td colspan="6" style="text-align: center;">
+                                                Product Table Is Empty
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-xs-12 col-12">
+                                <pagination [totalItems]="totalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize"
+                                            class="pagination-sm" (pageChanged)="pageChanged($event)"
+                                            [itemsPerPage]="itemsPerPage" [boundaryLinks]="true"
+                                            [rotate]="false"></pagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix space20"></div>

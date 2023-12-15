@@ -1,0 +1,68 @@
+<!-- BREADCRUMBS -->
+<div class="bcrumbs">
+    <div class="container">
+        <ul>
+
+            <li>Create User</li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- MY ACCOUNT -->
+<div class="account-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 checkout-steps">
+                <h6>Create User</h6>
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-md-9 col-sm-8">
+                <div id="account-id">
+                    <h4 class="account-title"><span class="fa fa-chevron-right"></span>Create New User</h4>
+                    <div class="account-form">
+                        <form [formGroup]="createUser" (submit)="createUserSubmit()">
+                            <ul class="form-list row">
+                                <li class="col-md-6 col-sm-6">
+                                    <label>Name <em>*</em></label>
+                                    <input name="name" class="input-md form-control" placeholder="Full Name"
+                                           formControlName="name" type="text" required>
+                                </li>
+                                <li class="col-md-6 col-sm-6">
+                                    <label>Email <em>*</em></label>
+                                    <input name="email" class="input-md form-control" placeholder="Email"
+                                           formControlName="email" type="email" required>
+                                </li>
+                                <li class="col-md-6 col-sm-6">
+                                    <label>Phone Number <em>*</em></label>
+                                    <input name="phone" class="input-md form-control" formControlName="phone"
+                                           placeholder="Phone" type="text" required>
+                                </li>
+                                <li class="col-md-6 col-sm-6">
+                                    <label>Password <em>*</em></label>
+                                    <input name="password" class="input-md form-control" formControlName="password"
+                                           placeholder="Password" type="password" required>
+                                </li>
+
+                                <li class="col-md-6 col-sm-6">
+                                    <label>User Group <em>*</em></label>
+                                    <select name="userGroup" formControlName="userGroup" class="form-control" required>
+                                        <option value="admin"> Admin</option>
+                                        <option value="product_manager">Product Manager</option>
+                                        <option value="order_manager">Order Manager</option>
+                                        <option value="local_order_manager">Local Order Manager</option>
+                                        <option value="global_order_manager">Global Order Manager</option>
+                                    </select>
+                                </li>
+                            </ul>
+                            <div class="buttons-set">
+                                <button class="btn-black" type="submit"><span><span>Submit</span></span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix space20"></div>
